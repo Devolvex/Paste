@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:20-alpine
 RUN npm install -g npm
 RUN mkdir -p /usr/src/hastebin
 WORKDIR /usr/src/hastebin
