@@ -10,7 +10,7 @@
   "author": "Devolvex",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "lang-detector": "^1.0.6",
