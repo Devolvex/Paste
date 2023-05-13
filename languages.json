@@ -1,0 +1,12 @@
+{
+    "JavaScript": ".js",
+    "C": ".c",
+    "C++": ".cpp", 
+    "Python": ".py",
+    "Java": ".java",
+    "HTML": ".html",
+    "CSS": ".css",
+    "Ruby": ".rb",
+    "Go": ".go",
+    "PHP": ".php"
+}

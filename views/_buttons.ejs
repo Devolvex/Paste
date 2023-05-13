@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+<div class="buttons-wrapper">
+  <div class="buttons">
+    <a class="btn" tooltip-title="Save" tooltip-desc="control + s" id="save"><i class="fas fa-save"></i></a>
+    <a href="/new" class="btn" tooltip-title="New" tooltip-desc="control + n"><i class="fas fa-file-plus"></i></i>
+    </a>
+    <a href="<%= locals.id %>/duplicate" class="btn" tooltip-title="Edit & Duplicate" tooltip-desc="control + d"><i
+        class="fas fa-copy"></i></a>
+    <a href="<%= locals.id %>/raw" class="btn" tooltip-title="Raw" tooltip-desc="control + shift + r"><i
+        class="fas fa-file-alt"></i></a>
+    <button type="submit" id="submit" style="visibility:hidden;">
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="script.js"></script>
+<script>
+  document.getElementById('save').onclick = function () {
+    document.getElementById('submit').click();
+  };
+</script>

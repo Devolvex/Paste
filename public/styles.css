@@ -1,0 +1,121 @@
+body {
+  background-color: #001a20;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  padding: 1rem 0.5rem;
+  font-size: 1rem;
+}
+
+pre {
+  margin: 0;
+}
+
+#code-display {
+  background-color: transparent;
+  padding: 0;
+}
+
+.line-numbers {
+  color: #7d7d7d;
+  font-family: monospace;
+  text-align: end;
+}
+
+textarea {
+  background-color: transparent;
+  resize: none;
+  width: 100%;
+  padding: 0;
+  margin-left: 0.8rem;
+  color: #7d7d7d;
+  min-height: calc(100vh - 2rem);
+  border: none;
+  outline: none;
+}
+
+.buttons-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0.2%;
+  border-bottom-left-radius: 15px;
+}
+
+.logo {
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  width: 87px;
+  height: 42px;
+  display: inline-block;
+  cursor: pointer;
+  background: url(logoblue.png);
+}
+
+.logo:hover {
+  background: url(logowhite.png);
+}
+
+.buttons {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.buttons > * + * {
+  margin-left: 0.2rem;
+}
+
+.btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #96b9c0;
+  font-size: large;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 200ms ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn:hover {
+  color: white;
+}
+
+.btn:hover::after,
+.btn:hover::before {  
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background: #173e48;
+  height: 60%;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+}
+
+@media screen and (max-width: 768px) {
+  .btn:hover::after,
+  .btn:hover::before {  
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background: #173e48;
+    height: 75%;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+  }
+}
+
+.btn:hover::before {
+  content: attr(tooltip-title) "\A" attr(tooltip-desc);
+  white-space: pre;
+  color: white;
+  padding: 0.6rem;
+  font-family: Helvetica, sans-serif;
+  font-size: 13px;
+}

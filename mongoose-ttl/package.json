@@ -1,0 +1,24 @@
+{
+  "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
+  "name": "mongoose-ttl",
+  "description": "Mongoose Time-To-Live plugin",
+  "version": "0.0.3",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aheckmann/mongoose-ttl.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": ">0.4.x"
+  },
+  "dependencies": {
+    "ms": "0.1.0"
+  },
+  "devDependencies": {
+    "mongoose": "2.7.0",
+    "mocha": "1.2.1"
+  }
+}
