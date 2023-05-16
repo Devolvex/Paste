@@ -14,7 +14,7 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "lang-detector": "^1.0.6",
-    "mongoose": "^6.11.1"
+    "mysql2": "^3.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
