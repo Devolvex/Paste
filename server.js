@@ -42,15 +42,15 @@ app.get('/', (req, res) => {
   res.render('new');
 });
 
-app.post('/save', (req, res) => {
+app.post('/save', async (req, res) => {
   const value = req.body.value;
-  const lang = detectLang(value);
+  const lang = await detectLang(value);
   const id = `${Math.random().toString(36).substring(2, 9)}${lang !== 'Unknown' ? langs[lang] : ''}`;
   try {
     const query = 'INSERT INTO pastes (id, value) VALUES (?, ?)';
     connection.query(query, [id, value], (err) => {
       if (err) {
-        console.error("Error saving pastes:", err);
+        console.error('Error saving pastes:', err);
         res.render('new', { value });
       } else {
         res.redirect(`/${id}`);
@@ -61,7 +61,7 @@ app.post('/save', (req, res) => {
   }
 });
 
-app.get('/:id/duplicate', (req, res) => {
+app.get("/:id/duplicate", (req, res) => {
   const id = req.params.id;
   try {
     const query = 'SELECT value FROM pastes WHERE id = ?';

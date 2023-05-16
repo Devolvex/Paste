@@ -1,4 +1,3 @@
-// Save document
 document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.key === 's') {
       e.preventDefault();
@@ -6,7 +5,6 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// New document
 document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.key === 'n') {
       e.preventDefault();
@@ -14,7 +12,6 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// Duplicate
 document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.key === 'd') {
       e.preventDefault();
@@ -22,7 +19,6 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// Raw document
 document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.shiftKey && e.key === 'r') {
       e.preventDefault();
