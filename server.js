@@ -1,11 +1,11 @@
 require('dotenv').config();
-const express = require("express");
+const express = require('express');
 const app = express();
-app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-const mysql = require("mysql2"); // Use mysql2 package instead of mysql
+const mysql = require('mysql2');
 const detectLang = require('lang-detector');
 const langs = require('./languages.json');
 
@@ -21,55 +21,55 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) {
-    console.error("Error connecting to MySQL:", err);
+    console.error('Error connecting to MySQL:', err);
   } else {
-    console.log("Connected to MySQL database");
+    console.log('Connected to MySQL database');
   }
 });
 
 function deleteExpiredDocuments() {
-  const query = "DELETE FROM pastes WHERE created_at < NOW() - INTERVAL 7 DAY";
+  const query = 'DELETE FROM pastes WHERE created_at < NOW() - INTERVAL 7 DAY';
   connection.query(query, (err) => {
     if (err) {
-      console.error("Error deleting expired pastes:", err);
+      console.error('Error deleting expired pastes:', err);
     }
   });
 }
 
 setInterval(deleteExpiredDocuments, 24 * 60 * 60 * 1000);
 
-app.get("/", (req, res) => {
-  res.render("new");
+app.get('/', (req, res) => {
+  res.render('new');
 });
 
-app.post("/save", async (req, res) => {
+app.post('/save', (req, res) => {
   const value = req.body.value;
-  const lang = await detectLang(value);
+  const lang = detectLang(value);
   const id = `${Math.random().toString(36).substring(2, 9)}${lang !== 'Unknown' ? langs[lang] : ''}`;
   try {
-    const query = "INSERT INTO pastes (id, value) VALUES (?, ?)";
+    const query = 'INSERT INTO pastes (id, value) VALUES (?, ?)';
     connection.query(query, [id, value], (err) => {
       if (err) {
         console.error("Error saving pastes:", err);
-        res.render("new", { value });
+        res.render('new', { value });
       } else {
         res.redirect(`/${id}`);
       }
     });
   } catch (e) {
-    res.render("new", { value });
+    res.render('new', { value });
   }
 });
 
-app.get("/:id/duplicate", async (req, res) => {
+app.get('/:id/duplicate', (req, res) => {
   const id = req.params.id;
   try {
-    const query = "SELECT value FROM pastes WHERE id = ?";
+    const query = 'SELECT value FROM pastes WHERE id = ?';
     connection.query(query, [id], (err, results) => {
       if (err || results.length === 0) {
         res.redirect(`/${id}`);
       } else {
-        res.render("new", { value: results[0].value });
+        res.render('new', { value: results[0].value });
       }
     });
   } catch (e) {
@@ -77,15 +77,15 @@ app.get("/:id/duplicate", async (req, res) => {
   }
 });
 
-app.get("/:id/raw", async (req, res) => {
+app.get('/:id/raw', (req, res) => {
   const id = req.params.id;
   try {
-    const query = "SELECT value FROM pastes WHERE id = ?";
+    const query = 'SELECT value FROM pastes WHERE id = ?';
     connection.query(query, [id], (err, results) => {
       if (err || results.length === 0) {
         res.redirect(`/`);
       } else {
-        res.render("raw", { code: results[0].value });
+        res.render('raw', { code: results[0].value });
       }
     });
   } catch (e) {
@@ -93,19 +93,19 @@ app.get("/:id/raw", async (req, res) => {
   }
 });
 
-app.get("/:id", async (req, res) => {
+app.get('/:id', (req, res) => {
   const id = req.params.id;
   try {
-    const query = "SELECT value FROM pastes WHERE id = ?";
+    const query = 'SELECT value FROM pastes WHERE id = ?';
     connection.query(query, [id], (err, results) => {
       if (err || results.length === 0) {
-        res.redirect("/");
+        res.redirect('/');
       } else {
-        res.render("code-display", { code: results[0].value, id });
+        res.render('code-display', { code: results[0].value, id });
       }
     });
   } catch (e) {
-    res.redirect("/");
+    res.redirect('/');
   }
 });
 
