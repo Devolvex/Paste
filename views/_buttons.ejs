@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
-<div class="buttons-wrapper">
-  <div class="buttons">
+<div class="footer">
+  <div class="button-container">
     <a class="btn" tooltip-title="Save" tooltip-desc="control + s" id="save"><i class="fas fa-save"></i></a>
     <a href="/new" class="btn" tooltip-title="New" tooltip-desc="control + n"><i class="fas fa-file-plus"></i></i>
     </a>
@@ -9,9 +9,10 @@
         class="fas fa-copy"></i></a>
     <a href="<%= locals.id %>/raw" class="btn" tooltip-title="Raw" tooltip-desc="control + shift + r"><i
         class="fas fa-file-alt"></i></a>
-    <button type="submit" id="submit" style="visibility:hidden;">
+    <button type="submit" id="submit" style="visibility:hidden;"></button>
   </div>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="script.js"></script>
@@ -19,4 +20,15 @@
   document.getElementById('save').onclick = function () {
     document.getElementById('submit').click();
   };
+
+/* JavaScript for repositioning the tooltip box on mousemove */
+const btns = document.querySelectorAll(".btn");
+const tooltipBox = document.querySelector(".btn:hover::before");
+
+btns.forEach(btn => {
+  btn.addEventListener("mousemove", e => {
+    tooltipBox.style.left = e.clientX + "px";
+    tooltipBox.style.top = e.clientY + "px";
+  });
+});
 </script>
