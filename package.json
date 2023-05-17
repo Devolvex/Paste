@@ -10,11 +10,13 @@
   "author": "Devolvex",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.14.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "lang-detector": "^1.0.6",
-    "mysql2": "^3.3.1"
+    "mysql2": "^3.3.1",
+    "prisma": "^4.14.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
